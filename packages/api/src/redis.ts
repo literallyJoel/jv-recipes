@@ -7,7 +7,7 @@ class Redis extends _Redis {
     key: string,
     func: () => string | Buffer | number | Promise<string | Buffer | number>,
     expires?: number,
-  ): Promise<any> {
+  ): Promise<string | null> {
     const exists = await this.exists(key);
 
     if (!exists) {
@@ -19,7 +19,7 @@ class Redis extends _Redis {
           await this.set(key, value);
         }
 
-        return value;
+        return this.get(key);
       } catch (e) {
         console.error("Failed to set cache value: ", e);
         throw e;
@@ -30,6 +30,7 @@ class Redis extends _Redis {
         return value;
       } catch (e) {
         console.error("Failed to get cache value: ", e);
+        throw e;
       }
     }
   }

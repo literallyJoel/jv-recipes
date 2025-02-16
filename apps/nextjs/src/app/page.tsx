@@ -1,23 +1,22 @@
 import { api, HydrateClient } from "~/trpc/server";
 import { AuthButton } from "./_components/AuthButton";
-import { useState } from "react";
 import InputComponent from "./_components/InputComponent";
 
 export default function HomePage() {
   const get = async (key: string) => {
     "use server";
-    return await api.post.getCache({key});
-  }
+    return await api.post.getCache({ key });
+  };
 
   const set = async (key: string, value: string) => {
     "use server";
-    return await api.post.createCache({key, value});
-  }
+    return await api.post.createCache({ key, value });
+  };
 
   const compute = async (key: string, value: number) => {
     "use server";
-    return await api.post.computeCache({key, value});
-  }
+    return await api.post.computeCache({ key, value });
+  };
 
   return (
     <HydrateClient>
@@ -27,8 +26,8 @@ export default function HomePage() {
             JV Recipes
           </h1>
           <AuthButton />
-      
-        <InputComponent get={get} set={set} compute={compute}/>
+
+          <InputComponent get={get} set={set} compute={compute} />
         </div>
       </main>
     </HydrateClient>

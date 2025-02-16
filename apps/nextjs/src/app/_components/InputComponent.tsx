@@ -101,7 +101,6 @@ const InputComponent = ({ get, set, compute }: IInputComponentProps) => {
         </button>
       </div>
 
-
       <div className="flex w-1/3 flex-col items-center justify-center gap-2 rounded-md border border-white p-4">
         <div className="w-full p-4 text-xl font-bold">Get Key</div>
         {getKey && (
