@@ -1,5 +1,5 @@
 {
-  "name": "@acme/auth-proxy",
+  "name": "@jv-recipes/auth-proxy",
   "private": true,
   "type": "module",
   "scripts": {
@@ -13,10 +13,10 @@
     "@auth/core": "0.37.2"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
-    "@acme/prettier-config": "workspace:*",
-    "@acme/tailwind-config": "workspace:*",
-    "@acme/tsconfig": "workspace:*",
+    "@jv-recipes/eslint-config": "workspace:*",
+    "@jv-recipes/prettier-config": "workspace:*",
+    "@jv-recipes/tailwind-config": "workspace:*",
+    "@jv-recipes/tsconfig": "workspace:*",
     "@types/node": "^22.10.10",
     "eslint": "catalog:",
     "h3": "^1.14.0",
@@ -24,5 +24,5 @@
     "prettier": "catalog:",
     "typescript": "catalog:"
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@jv-recipes/prettier-config"
 }
