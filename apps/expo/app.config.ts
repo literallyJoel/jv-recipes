@@ -18,6 +18,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     fallbackToCacheTimeout: 0,
   },
   assetBundlePatterns: ["**/*"],
+  jsEngine: "hermes",
   ios: {
     bundleIdentifier: "your.bundle.identifier",
     supportsTablet: true,
