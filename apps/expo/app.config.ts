@@ -2,31 +2,32 @@ import type { ConfigContext, ExpoConfig } from "expo/config";
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
-  name: "expo",
-  slug: "expo",
-  scheme: "expo",
+  name: "JV Recipes",
+  slug: "jvrecipes",
+  scheme: "jvrecipes",
   version: "0.1.0",
   orientation: "portrait",
-  icon: "./assets/icon.png",
+  icon: "./assets/logo_light.png",
   userInterfaceStyle: "automatic",
   splash: {
-    image: "./assets/icon.png",
+    image: "./assets/logo_light.png",
     resizeMode: "contain",
-    backgroundColor: "#1F104A",
+    backgroundColor: "#a90d3b",
   },
   updates: {
     fallbackToCacheTimeout: 0,
   },
   assetBundlePatterns: ["**/*"],
+  jsEngine: "hermes",
   ios: {
-    bundleIdentifier: "your.bundle.identifier",
+    bundleIdentifier: "com.jdvivian.jvrecipes",
     supportsTablet: true,
   },
   android: {
-    package: "your.bundle.identifier",
+    package: "com.jdvivian.jvrecipes",
     adaptiveIcon: {
-      foregroundImage: "./assets/icon.png",
-      backgroundColor: "#1F104A",
+      foregroundImage: "./assets/logo_light.png",
+      backgroundColor: "#A90D3B",
     },
   },
   // extra: {
