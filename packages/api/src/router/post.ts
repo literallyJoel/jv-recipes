@@ -1,40 +1,31 @@
 import type { TRPCRouterRecord } from "@trpc/server";
-import { z } from "zod";
-
 import { desc, eq } from "@jv-recipes/db";
 import { CreatePostSchema, Post } from "@jv-recipes/db/schema";
+import { z } from "zod";
 
+import { redis } from "../redis";
 import { protectedProcedure, publicProcedure } from "../trpc";
 
 export const postRouter = {
-  all: publicProcedure.query(({ ctx }) => {
-    // return ctx.db.select().from(schema.post).orderBy(desc(schema.post.id));
-    return ctx.db.query.Post.findMany({
-      orderBy: desc(Post.id),
-      limit: 10,
-    });
-  }),
+  createCache: protectedProcedure
+    .input(z.object({ key: z.string(), value: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      await redis.set(input.key, input.value);
 
-  byId: publicProcedure
-    .input(z.object({ id: z.string() }))
-    .query(({ ctx, input }) => {
-      // return ctx.db
-      //   .select()
-      //   .from(schema.post)
-      //   .where(eq(schema.post.id, input.id));
-
-      return ctx.db.query.Post.findFirst({
-        where: eq(Post.id, input.id),
+      return redis.get(input.key);
+    }),
+  computeCache: protectedProcedure
+    .input(z.object({ key: z.string(), value: z.number() }))
+    .mutation(async ({ ctx, input }) => {
+      return await redis.compute(input.key, () => {
+        const temp = ["a"];
+        const x = temp.fill("a", 0, input.value);
+        return x.join("");
       });
     }),
-
-  create: protectedProcedure
-    .input(CreatePostSchema)
-    .mutation(({ ctx, input }) => {
-      return ctx.db.insert(Post).values(input);
+  getCache: protectedProcedure
+    .input(z.object({ key: z.string() }))
+    .query(async ({ ctx, input }) => {
+      return await redis.get(input.key);
     }),
-
-  delete: protectedProcedure.input(z.string()).mutation(({ ctx, input }) => {
-    return ctx.db.delete(Post).where(eq(Post.id, input));
-  }),
 } satisfies TRPCRouterRecord;
