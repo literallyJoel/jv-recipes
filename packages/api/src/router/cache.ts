@@ -62,7 +62,7 @@ export const cacheRouter = {
 
         return await redis.set(key, input.value, "GET");
       } catch (e) {
-        console.error(`Cacbe Error: ${e as Error}`);
+        console.error(`Cache Error: ${e as Error}`);
         throw new TRPCError({
           message: "Internal Server Error",
           code: "INTERNAL_SERVER_ERROR",
