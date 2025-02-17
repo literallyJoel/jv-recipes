@@ -27,7 +27,8 @@
     "push": "pnpm with-env drizzle-kit push",
     "studio": "pnpm with-env drizzle-kit studio",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "with-env": "dotenv -e ../../.env --"
+    "with-env": "dotenv -e ../../.env --",
+    "dbml": "tsx ./dev/generateSchema.ts"
   },
   "dependencies": {
     "@vercel/postgres": "^0.10.0",
@@ -40,9 +41,11 @@
     "@jv-recipes/prettier-config": "workspace:*",
     "@jv-recipes/tsconfig": "workspace:*",
     "dotenv-cli": "^8.0.0",
+    "drizzle-dbml-generator": "^0.10.0",
     "drizzle-kit": "^0.30.2",
     "eslint": "catalog:",
     "prettier": "catalog:",
+    "tsx": "^4.19.2",
     "typescript": "catalog:"
   },
   "prettier": "@jv-recipes/prettier-config"

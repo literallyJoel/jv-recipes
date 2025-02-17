@@ -40,6 +40,10 @@
       "cache": false,
       "persistent": true
     },
+    "dbml": {
+      "cache": false,
+      "persistent": false
+    },
     "ui-add": {
       "cache": false,
       "interactive": true
