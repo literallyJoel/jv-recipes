@@ -12,6 +12,7 @@
     "clean:workspaces": "turbo run clean",
     "db:push": "turbo -F @jv-recipes/db push",
     "db:studio": "turbo -F @jv-recipes/db studio",
+    "db:dbml": "turbo -F @jv-recipes/db dbml",
     "dev": "turbo watch dev --continue",
     "dev:next": "turbo watch dev -F @jv-recipes/nextjs...",
     "format": "turbo run format --continue -- --cache --cache-location .cache/.prettiercache",

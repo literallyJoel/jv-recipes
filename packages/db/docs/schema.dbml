@@ -1,0 +1,108 @@
+table account {
+  userId uuid [not null]
+  type varchar(255) [not null]
+  provider varchar(255) [not null]
+  providerAccountId varchar(255) [not null]
+  refresh_token varchar(255)
+  access_token text
+  expires_at integer
+  token_type varchar(255)
+  scope varchar(255)
+  id_token text
+  session_state varchar(255)
+
+  indexes {
+    (provider, providerAccountId) [pk]
+  }
+}
+
+table ingredient {
+  id uuid [pk, not null, default: `gen_random_uuid()`]
+  userId uuid [not null]
+  name varchar(50) [not null]
+  price "double precision"
+  unit varchar(6)
+  amount "double precision"
+  createdAt timestamp [not null, default: `now()`]
+  updatedAt timestamp [not null, default: `now()`]
+}
+
+table mealplan {
+  startDate date [not null]
+  userId uuid [not null]
+
+  indexes {
+    (startDate, userId) [pk]
+  }
+}
+
+table mealplanrecipe {
+  id uuid [pk, not null, default: `gen_random_uuid()`]
+  mealPlanStartDate date [not null]
+  userId uuid [not null]
+  recipeId uuid [not null]
+  day smallint [not null]
+  meal varchar(9) [not null]
+}
+
+table recipe {
+  id uuid [pk, not null, default: `gen_random_uuid()`]
+  userId uuid [not null]
+  name varchar(50) [not null]
+  createdAt timestamp [not null, default: `now()`]
+  updatedAt "timestamp with time zone" [not null, default: `now()`]
+}
+
+table recipeingredient {
+  recipeId uuid [not null]
+  ingredientId uuid [not null]
+  unit varchar(6)
+  amount "double precision"
+
+  indexes {
+    (recipeId, ingredientId) [pk]
+  }
+}
+
+table session {
+  sessionToken varchar(255) [pk, not null]
+  userId uuid [not null]
+  expires "timestamp with time zone" [not null]
+}
+
+table sharedrecipe {
+  id uuid [pk, not null, default: `gen_random_uuid()`]
+  recipeId uuid [not null]
+  sharedById uuid [not null]
+  sharedWithId uuid [not null]
+}
+
+table user {
+  id uuid [pk, not null, default: `gen_random_uuid()`]
+  name varchar(255)
+  email varchar(255) [not null]
+  emailVerified "timestamp with time zone"
+  image varchar(255)
+}
+
+ref: account.userId > user.id
+
+ref: ingredient.userId - user.id
+
+ref: mealplanrecipe.(mealPlanStartDate, userId) > mealplan.(startDate, userId)
+
+ref: mealplanrecipe.recipeId > recipe.id
+
+ref: mealplan.userId - user.id
+
+ref: recipeingredient.recipeId > recipe.id
+
+ref: recipeingredient.ingredientId > ingredient.id
+
+ref: recipe.userId - user.id
+
+ref: session.userId - user.id
+
+ref: sharedrecipe.recipeId > recipe.id
+
+ref: sharedrecipe.(sharedById, sharedWithId) - user.(id, id)
