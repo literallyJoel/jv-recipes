@@ -1,4 +1,5 @@
 import type { TRPCRouterRecord } from "@trpc/server";
+import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
 import { redis } from "../redis";
@@ -6,6 +7,10 @@ import { protectedProcedure } from "../trpc";
 
 function relativeToSeconds(relative: string) {
   const value = parseInt(relative);
+  if (isNaN(value)) {
+    throw new Error("Invalid cache time provided (numeric)");
+  }
+
   const unit = relative.slice(String(value).length);
 
   switch (unit) {
@@ -20,7 +25,7 @@ function relativeToSeconds(relative: string) {
     case "w":
       return value * 60 * 60 * 24 * 7;
     default:
-      return 0;
+      throw new Error(`Invalid cache time provided (unit: got ${unit})`);
   }
 }
 
@@ -50,7 +55,11 @@ export const cacheRouter = {
           return redis.get(key);
         }
       } catch (e) {
-        console.error(`Cacbe Error: ${e}`);
+        console.error(`Cacbe Error: ${e as Error}`);
+        throw new TRPCError({
+          message: "Internal Server Error",
+          code: "INTERNAL_SERVER_ERROR",
+        });
       }
       return await redis.set(key, input.value, "GET");
     }),
@@ -70,18 +79,25 @@ export const cacheRouter = {
           input.expires,
         );
       } catch (e) {
-        console.error(`Cache Error: ${e}`);
+        console.error(`Cache Error: ${e as Error}`);
+        throw new TRPCError({
+          message: "Internal Server Error",
+          code: "INTERNAL_SERVER_ERROR",
+        });
       }
     }),
   get: protectedProcedure
     .input(z.object({ key: z.string() }))
     .query(async ({ ctx, input }) => {
       const key = `${ctx.session.user.id}_${input.key}`;
-
       try {
         return await redis.get(key);
       } catch (e) {
-        console.error(`Cache Error: ${e}`);
+        console.error(`Cache Error: ${e as Error}`);
+        throw new TRPCError({
+          message: "Internal Server Error",
+          code: "INTERNAL_SERVER_ERROR",
+        });
       }
     }),
 } satisfies TRPCRouterRecord;
