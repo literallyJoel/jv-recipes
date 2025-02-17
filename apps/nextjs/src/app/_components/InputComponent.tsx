@@ -5,14 +5,14 @@ import { useState } from "react";
 interface IInputComponentProps {
   get: (key: string) => Promise<string | null>;
   set: (key: string, value: string) => Promise<string | null>;
-  compute: (key: string, num: number) => Promise<string | null>;
+  compute: (key: string, value: string) => Promise<string | null>;
 }
 const InputComponent = ({ get, set, compute }: IInputComponentProps) => {
   const [getKey, setGetKey] = useState<string>();
   const [setKey, setSetKey] = useState<string>();
   const [setValue, setSetValue] = useState<string>();
   const [computeKey, setComputeKey] = useState<string>();
-  const [computeNum, setComputeNum] = useState<number>();
+  const [computeValue, setComputeValue] = useState<string>();
 
   const [getValue, setGetValue] = useState<string>();
   const [returnedSetValue, setReturnedSetValue] = useState<string>();
@@ -28,7 +28,7 @@ const InputComponent = ({ get, set, compute }: IInputComponentProps) => {
     const val = await set(key, value);
     setReturnedSetValue(val ?? undefined);
   }
-  async function _compute(key?: string, value?: number) {
+  async function _compute(key?: string, value?: string) {
     if (!key || !value) return;
     const val = await compute(key, value);
     setComputedValue(val ?? undefined);
@@ -88,14 +88,14 @@ const InputComponent = ({ get, set, compute }: IInputComponentProps) => {
           <input
             type="number"
             className="rounded-md bg-slate-400 p-2"
-            value={computeNum}
-            onChange={(e) => setComputeNum(parseInt(e.target.value))}
+            value={computeValue}
+            onChange={(e) => setComputeValue(e.target.value)}
           />
         </div>
         <button
           className="min-w-24 rounded-md bg-slate-600 p-2"
-          disabled={!computeKey || !computeNum}
-          onClick={() => _compute(computeKey, computeNum)}
+          disabled={!computeKey || !computeValue}
+          onClick={() => _compute(computeKey, computeValue)}
         >
           Compute
         </button>

@@ -5,17 +5,17 @@ import InputComponent from "./_components/InputComponent";
 export default function HomePage() {
   const get = async (key: string) => {
     "use server";
-    return await api.post.getCache({ key });
+    return await api.cache.get({ key });
   };
 
   const set = async (key: string, value: string) => {
     "use server";
-    return await api.post.createCache({ key, value });
+    return await api.cache.set({ key, value });
   };
 
-  const compute = async (key: string, value: number) => {
+  const compute = async (key: string, value: string) => {
     "use server";
-    return await api.post.computeCache({ key, value });
+    return await api.cache.compute({ key, value });
   };
 
   return (
