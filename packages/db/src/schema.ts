@@ -313,7 +313,7 @@ export const MealPlanRecipe = pgTable(
 );
 
 export const CreateMealPlanRecipeSchema = createInsertSchema(MealPlanRecipe, {
-  mealPlanStartDate: z.string().uuid(),
+  mealPlanStartDate: z.coerce.date(),
   userId: z.string().uuid(),
   recipeId: z.string().uuid(),
   day: z
