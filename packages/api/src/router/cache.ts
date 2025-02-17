@@ -44,11 +44,14 @@ export const cacheRouter = {
       const key = `${ctx.session.user.id}_${input.key}`;
       const expires = input.expires;
 
-      if (expires) {
-        await redis.setex(key, expires, input.value);
-        return redis.get(key);
+      try {
+        if (expires) {
+          await redis.setex(key, expires, input.value);
+          return redis.get(key);
+        }
+      } catch (e) {
+        console.error(`Cacbe Error: ${e}`);
       }
-
       return await redis.set(key, input.value, "GET");
     }),
   compute: protectedProcedure
@@ -58,19 +61,27 @@ export const cacheRouter = {
     .mutation(async ({ ctx, input }) => {
       const key = `${ctx.session.user.id}_${input.key}`;
 
-      return await redis.compute(
-        key,
-        () => {
-          return input.value;
-        },
-        input.expires,
-      );
+      try {
+        return await redis.compute(
+          key,
+          () => {
+            return input.value;
+          },
+          input.expires,
+        );
+      } catch (e) {
+        console.error(`Cache Error: ${e}`);
+      }
     }),
   get: protectedProcedure
     .input(z.object({ key: z.string() }))
     .query(async ({ ctx, input }) => {
       const key = `${ctx.session.user.id}_${input.key}`;
 
-      return await redis.get(key);
+      try {
+        return await redis.get(key);
+      } catch (e) {
+        console.error(`Cache Error: ${e}`);
+      }
     }),
 } satisfies TRPCRouterRecord;
