@@ -235,9 +235,13 @@ export const SharedRecipeRelations = relations(SharedRecipe, ({ one }) => ({
     fields: [SharedRecipe.recipeId],
     references: [Recipe.id],
   }),
-  user: one(User, {
-    fields: [SharedRecipe.sharedById, SharedRecipe.sharedWithId],
-    references: [User.id, User.id],
+  sharedBy: one(User, {
+    fields: [SharedRecipe.sharedById],
+    references: [User.id],
+  }),
+  sharedWith: one(User, {
+    fields: [SharedRecipe.sharedWithId],
+    references: [User.id],
   }),
 }));
 
