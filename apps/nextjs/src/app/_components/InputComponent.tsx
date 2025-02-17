@@ -86,7 +86,7 @@ const InputComponent = ({ get, set, compute }: IInputComponentProps) => {
         <div className="flex flex-row items-center justify-center gap-2">
           <div>Value</div>
           <input
-            type="number"
+            type="text"
             className="rounded-md bg-slate-400 p-2"
             value={computeValue}
             onChange={(e) => setComputeValue(e.target.value)}

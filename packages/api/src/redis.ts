@@ -37,9 +37,7 @@ class Redis extends _Redis {
 }
 
 const redisClient = () => {
-  return new Redis(env.REDIS_URL, {
-    tls: { rejectUnauthorized: false },
-  });
+  return new Redis(env.REDIS_URL);
 };
 
 export const redis = redisClient();
