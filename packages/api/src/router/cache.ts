@@ -7,8 +7,13 @@ import { protectedProcedure } from "../trpc";
 
 function relativeToSeconds(relative: string) {
   const value = parseInt(relative);
+
   if (isNaN(value)) {
-    throw new Error("Invalid cache time provided (numeric)");
+    throw new Error(`Invalid cache time provided (numeric: recieved ${value})`);
+  }
+
+  if (value < 0) {
+    throw new Error(`Invalide cache time provided (numeric: recieved ${value}`);
   }
 
   const unit = relative.slice(String(value).length);
