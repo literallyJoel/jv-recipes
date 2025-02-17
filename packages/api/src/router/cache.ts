@@ -54,6 +54,8 @@ export const cacheRouter = {
           await redis.setex(key, expires, input.value);
           return redis.get(key);
         }
+
+        return await redis.set(key, input.value, "GET");
       } catch (e) {
         console.error(`Cacbe Error: ${e as Error}`);
         throw new TRPCError({
@@ -61,7 +63,6 @@ export const cacheRouter = {
           code: "INTERNAL_SERVER_ERROR",
         });
       }
-      return await redis.set(key, input.value, "GET");
     }),
   compute: protectedProcedure
     .input(
