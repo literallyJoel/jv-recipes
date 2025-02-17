@@ -106,7 +106,7 @@ export const Recipe = pgTable("recipe", (t) => ({
 }));
 
 export const CreateRecipeSchema = z.object({
-  name: z.string(),
+  name: z.string().max(50, "Name cannot be more than 50 characters").nonempty(),
   ingredients: z.array(
     z.object({
       id: z.string().uuid(),
