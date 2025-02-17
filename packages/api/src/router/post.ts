@@ -15,10 +15,8 @@ export const postRouter = {
   computeCache: protectedProcedure
     .input(z.object({ key: z.string(), value: z.number() }))
     .mutation(async ({ input }) => {
-      return await redis.compute(input.key, () => {
-        const temp = ["a"];
-        const x = temp.fill("a", 0, input.value);
-        return x.join("");
+      return await redis.compute(input.key, async () => {
+        return Array(input.value).fill("a").join("");
       });
     }),
   getCache: protectedProcedure

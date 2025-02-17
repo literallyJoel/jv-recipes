@@ -88,7 +88,7 @@ const InputComponent = ({ get, set, compute }: IInputComponentProps) => {
           <input
             type="number"
             className="rounded-md bg-slate-400 p-2"
-            value={setValue}
+            value={computeNum}
             onChange={(e) => setComputeNum(parseInt(e.target.value))}
           />
         </div>
@@ -97,7 +97,7 @@ const InputComponent = ({ get, set, compute }: IInputComponentProps) => {
           disabled={!computeKey || !computeNum}
           onClick={() => _compute(computeKey, computeNum)}
         >
-          Set
+          Compute
         </button>
       </div>
 
