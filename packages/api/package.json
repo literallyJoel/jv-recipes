@@ -23,6 +23,7 @@
     "@jv-recipes/db": "workspace:*",
     "@jv-recipes/validators": "workspace:*",
     "@trpc/server": "catalog:",
+    "ioredis": "^5.5.0",
     "superjson": "2.2.2",
     "zod": "catalog:"
   },
