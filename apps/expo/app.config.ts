@@ -39,5 +39,23 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     tsconfigPaths: true,
     typedRoutes: true,
   },
-  plugins: ["expo-router"],
+  plugins: [
+    "expo-router",
+    [
+      "expo-font",
+      {
+        fonts: [
+          "./node_modules/jv-recipes/shared/assets/fonts/Montserrat-Black.ttf",
+          "./node_modules/jv-recipes/shared/assets/Montserrat-Bold.ttf",
+          "./node_modules/jv-recipes/shared/assets/Montserrat-ExtraBold.ttf",
+          "./node_modules/jv-recipes/shared/assets/Montserrat-ExtraLight.ttf",
+          "./node_modules/jv-recipes/shared/assets/Montserrat-Light.ttf",
+          "./node_modules/jv-recipes/shared/assets/Montserrat-Medium.ttf",
+          "./node_modules/jv-recipes/shared/assets/Montserrat-Regular.ttf",
+          "./node_modules/jv-recipes/shared/assets/Montserrat-SemiBold.ttf",
+          "./node_modules/jv-recipes/shared/assets/Montserrat-Thin.ttf",
+        ],
+      },
+    ],
+  ],
 });
