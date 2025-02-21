@@ -7,10 +7,10 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   scheme: "jvrecipes",
   version: "0.1.0",
   orientation: "portrait",
-  icon: "./assets/logo_light.png",
+  icon: "./src/assets/images/logo_light.png",
   userInterfaceStyle: "automatic",
   splash: {
-    image: "./assets/logo_light.png",
+    image: "./src/assets/images/logo_light.png",
     resizeMode: "contain",
     backgroundColor: "#a90d3b",
   },
@@ -26,7 +26,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   android: {
     package: "com.jdvivian.jvrecipes",
     adaptiveIcon: {
-      foregroundImage: "./assets/logo_light.png",
+      foregroundImage: "./src/assets/images/logo_light.png",
       backgroundColor: "#A90D3B",
     },
   },

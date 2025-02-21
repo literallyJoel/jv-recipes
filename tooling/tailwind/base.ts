@@ -43,6 +43,9 @@ export default {
       borderColor: {
         DEFAULT: "hsl(var(--border))",
       },
+      fontFamily: {
+        MontserratSemiBold: ["SemiBold", "sans-serif"],
+      },
     },
   },
 } satisfies Config;
