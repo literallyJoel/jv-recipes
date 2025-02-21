@@ -245,6 +245,9 @@ importers:
       '@jv-recipes/db':
         specifier: workspace:*
         version: link:../../packages/db
+      '@jv-recipes/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       '@jv-recipes/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -471,6 +474,9 @@ importers:
       '@jv-recipes/prettier-config':
         specifier: workspace:*
         version: link:../../tooling/prettier
+      '@jv-recipes/tailwind-config':
+        specifier: workspace:*
+        version: link:../../tooling/tailwind
       '@jv-recipes/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript

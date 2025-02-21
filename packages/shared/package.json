@@ -21,6 +21,7 @@
   "devDependencies": {
     "@jv-recipes/eslint-config": "workspace:*",
     "@jv-recipes/prettier-config": "workspace:*",
+    "@jv-recipes/tailwind-config": "workspace:*",
     "@jv-recipes/tsconfig": "workspace:*",
     "eslint": "catalog:",
     "prettier": "catalog:",
