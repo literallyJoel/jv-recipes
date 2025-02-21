@@ -6,59 +6,59 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('../../node_modules/@jv-recipes/shared/assets/fonts/montserrat/Thin.ttf');
+  src: url('../../node_modules/@jv-recipes/shared/assets/fonts/montserrat/Montserrat-Thin.ttf');
   font-weight: 100;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('../../node_modules/@jv-recipes/shared/assets/fonts/montserrat/ExtraLight.ttf');
+  src: url('../../node_modules/@jv-recipes/shared/assets/fonts/montserrat/Montserrat-ExtraLight.ttf');
   font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('../../node_modules/@jv-recipes/shared/assets/fonts/montserrat/Light.ttf');
+  src: url('../../node_modules/@jv-recipes/shared/assets/fonts/montserrat/Montserrat-Light.ttf');
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('../../node_modules/@jv-recipes/shared/assets/fonts/montserrat/Regular.ttf');
+  src: url('../../node_modules/@jv-recipes/shared/assets/fonts/montserrat/Montserrat-Regular.ttf');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('../../node_modules/@jv-recipes/shared/assets/fonts/montserrat/Medium.ttf');
+  src: url('../../node_modules/@jv-recipes/shared/assets/fonts/montserrat/Montserrat-Medium.ttf');
   font-weight: 500;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('../../node_modules/@jv-recipes/shared/assets/fonts/montserrat/SemiBold.ttf');
+  src: url('../../node_modules/@jv-recipes/shared/assets/fonts/montserrat/Montserrat-SemiBold.ttf');
   font-weight: 600;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('../../node_modules/@jv-recipes/shared/assets/fonts/montserrat/Bold.ttf');
+  src: url('../../node_modules/@jv-recipes/shared/assets/fonts/montserrat/Montserrat-Bold.ttf');
   font-weight: 700;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('../../node_modules/@jv-recipes/shared/assets/fonts/montserrat/ExtraBold.ttf');
+  src: url('../../node_modules/@jv-recipes/shared/assets/fonts/montserrat/Montserrat-ExtraBold.ttf');
   font-weight: 800;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('../../node_modules/@jv-recipes/shared/assets/fonts/montserrat/Black.ttf');
+  src: url('../../node_modules/@jv-recipes/shared/assets/fonts/montserrat/Montserrat-Black.ttf');
   font-weight: 900;
 }
 /* Styles */
