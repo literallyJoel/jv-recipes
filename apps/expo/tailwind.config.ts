@@ -12,7 +12,7 @@ export default {
       fontFamily: {
         "montserrat-thin": ["Montserrat-Thin"],
         "montserrat-light": ["Montserrat-Light"],
-        "montserrat-regular": ["Montserrat-Regular"],
+        montserrat: ["Montserrat-Regular"],
         "montserrat-medium": ["Montserrat-Medium"],
         "montserrat-semibold": ["Montserrat-SemiBold"],
         "montserrat-bold": ["Montserrat-Bold"],

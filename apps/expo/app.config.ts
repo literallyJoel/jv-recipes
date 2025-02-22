@@ -10,7 +10,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   icon: "./node_modules/@jv-recipes/shared/assets/images/logos/logo_light.png",
   userInterfaceStyle: "automatic",
   splash: {
-    image: "./node_modules/@jv-recipes/shared/assets/images/logos/logo_light.png",
+    image:
+      "./node_modules/@jv-recipes/shared/assets/images/logos/logo_light.png",
     resizeMode: "contain",
     backgroundColor: "#a90d3b",
   },
