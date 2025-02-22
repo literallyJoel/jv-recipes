@@ -17,6 +17,7 @@
     "@jv-recipes/api": "workspace:*",
     "@jv-recipes/auth": "workspace:*",
     "@jv-recipes/db": "workspace:*",
+    "@jv-recipes/shared": "workspace:*",
     "@jv-recipes/ui": "workspace:*",
     "@jv-recipes/validators": "workspace:*",
     "@t3-oss/env-nextjs": "^0.12.0",

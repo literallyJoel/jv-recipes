@@ -7,10 +7,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   scheme: "jvrecipes",
   version: "0.1.0",
   orientation: "portrait",
-  icon: "./assets/logo_light.png",
+  icon: "./node_modules/@jv-recipes/shared/assets/images/logos/logo_light.png",
   userInterfaceStyle: "automatic",
   splash: {
-    image: "./assets/logo_light.png",
+    image:
+      "./node_modules/@jv-recipes/shared/assets/images/logos/logo_light.png",
     resizeMode: "contain",
     backgroundColor: "#a90d3b",
   },
@@ -26,7 +27,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   android: {
     package: "com.jdvivian.jvrecipes",
     adaptiveIcon: {
-      foregroundImage: "./assets/logo_light.png",
+      foregroundImage:
+        "./node_modules/@jv-recipes/shared/assets/images/logos/logo_light.png",
       backgroundColor: "#A90D3B",
     },
   },
@@ -39,5 +41,23 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     tsconfigPaths: true,
     typedRoutes: true,
   },
-  plugins: ["expo-router"],
+  plugins: [
+    "expo-router",
+    [
+      "expo-font",
+      {
+        fonts: [
+          "./node_modules/@jv-recipes/shared/assets/fonts/Montserrat-Black.ttf",
+          "./node_modules/@jv-recipes/shared/assets/fonts/Montserrat-Bold.ttf",
+          "./node_modules/@jv-recipes/shared/assets/fonts/Montserrat-ExtraBold.ttf",
+          "./node_modules/@jv-recipes/shared/assets/fonts/Montserrat-ExtraLight.ttf",
+          "./node_modules/@jv-recipes/shared/assets/fonts/Montserrat-Light.ttf",
+          "./node_modules/@jv-recipes/shared/assets/fonts/Montserrat-Medium.ttf",
+          "./node_modules/@jv-recipes/shared/assets/fonts/Montserrat-Regular.ttf",
+          "./node_modules/@jv-recipes/shared/assets/fonts/Montserrat-SemiBold.ttf",
+          "./node_modules/@jv-recipes/shared/assets/fonts/Montserrat-Thin.ttf",
+        ],
+      },
+    ],
+  ],
 });
