@@ -26,7 +26,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   android: {
     package: "com.jdvivian.jvrecipes",
     adaptiveIcon: {
-      foregroundImage: "./node_modules/jv-recipes/assets/images/logos/logo_light.png",
+      foregroundImage:
+        "./node_modules/jv-recipes/assets/images/logos/logo_light.png",
       backgroundColor: "#A90D3B",
     },
   },
